@@ -9,9 +9,10 @@ export class Numero {
     portada : Uint8Array;
     coleccion : Coleccion;
     estado : Estado;
+    imagen : string;
     
     constructor(id : number,volumen : number,fecha_publicacion : Date,fecha_compra : Date, autor : string, precio : number,
-        portada : Uint8Array, coleccion : Coleccion, estado : Estado){
+        portada : Uint8Array, coleccion : Coleccion, estado : Estado,imagen :string){
             this.id=id;
             this.volumen=volumen;
             this.fecha_publicacion=fecha_publicacion;
@@ -21,6 +22,7 @@ export class Numero {
             this.portada=portada;
             this.coleccion=coleccion;
             this.estado=estado;
+            this.imagen=imagen;
         }
 }
 enum Estado {
