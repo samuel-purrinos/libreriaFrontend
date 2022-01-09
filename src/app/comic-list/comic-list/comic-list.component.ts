@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Numero } from 'src/app/model/numero';
-import { NumeroServiceService } from '../../service/numero-service.service';
+import { NumeroService } from '../../service/numero.service';
 
 @Component({
   selector: 'app-comic-list',
@@ -10,7 +10,7 @@ import { NumeroServiceService } from '../../service/numero-service.service';
 export class ComicListComponent implements OnInit {
   numeros: Numero[] = [];
 
-  constructor(private numeroService: NumeroServiceService) {
+  constructor(private numeroService: NumeroService) {
   }
 
   ngOnInit() {

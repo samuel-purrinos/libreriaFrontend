@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Numero } from 'src/app/model/numero';
-import { NumeroServiceService } from 'src/app/service/numero-service.service';
+import { NumeroService } from 'src/app/service/numero.service';
 
 @Component({
   selector: 'app-comic-form',
@@ -13,7 +13,7 @@ export class ComicFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
     private router: Router, 
-    private numeroService: NumeroServiceService) {
+    private numeroService: NumeroService) {
   
   }
   ngOnInit(): void {

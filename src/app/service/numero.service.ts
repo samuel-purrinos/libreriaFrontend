@@ -3,14 +3,17 @@ import { Observable } from 'rxjs';
 import { Numero } from '../model/numero';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-@Injectable()
-export class NumeroServiceService {
+@Injectable({
+  providedIn: 'root'
+})
+export class NumeroService {
+
   private numerosUrl: string;
-  private addNumeroUrl: string;
+  private addNumero: string;
 
   constructor(private http: HttpClient) {
     this.numerosUrl = 'http://localhost:8080/findAll';
-    this.addNumeroUrl = 'http://localhost:8080/insertarnumero';
+    this.addNumero = 'http://localhost:8080/insertarnumero';
   }
 
   public findAll(): Observable<Numero[]> {
@@ -18,7 +21,6 @@ export class NumeroServiceService {
   }
 
   public save(numero: Numero) {
-    return this.http.post<Numero>(this.addNumeroUrl, numero);
+    return this.http.post<Numero>(this.addNumero, numero);
   }
-
 }
