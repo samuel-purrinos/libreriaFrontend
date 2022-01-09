@@ -1,0 +1,33 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Coleccion</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Volumen</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Publicacion</th>
+            <th scope="col">Compra</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Portada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let numero of numeros">
+            <td>{{ numero.coleccion.nombre }}</td>
+            <td>{{ numero.coleccion.editorial }}</td>
+            <td>{{ numero.volumen }}</td>
+            <td>{{ numero.precio }}</td>
+            <td>{{ numero.fecha_publicacion | date}}</td>
+            <td>{{ numero.fecha_compra | date}}</td>
+            <td>{{ numero.estado }}</td>
+            <td>{{ numero.autor }}</td>
+            <td><img src="data:image/jpg;base64, {{numero.portada}}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
