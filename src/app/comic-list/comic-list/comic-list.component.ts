@@ -13,6 +13,7 @@ export class ComicListComponent implements OnInit {
   constructor(private numeroService: NumeroService) {
   }
 
+  
   ngOnInit() {
     this.numeroService.findAll().subscribe(data => {
       this.numeros = data;

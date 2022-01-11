@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ComicListComponent } from './comic-list/comic-list/comic-list.component';
 import { ComicFormComponent } from './comic-form/comic-form/comic-form.component';
 import { NumeroService } from './service/numero.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NumeroService } from './service/numero.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [NumeroService],
   bootstrap: [AppComponent]
