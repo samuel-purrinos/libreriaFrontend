@@ -1,24 +1,26 @@
 <div class="card my-5">
     <div class="card-body">
-      <form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+      <form #formulario="ngForm" (ngSubmit)="onSubmit()" >
         <div class="form-group">
             <label for="coleccion">Street</label>
-            <input type="text" class="form-control" name="street" formControlName="coleccion">
+            <input type="text" class="form-control" name="coleccion" [(ngModel)]="numero.coleccion.nombre"
+            id="nombre"
+            required #nombre="ngModel" >
           </div>
-          <div *ngIf="!coleccion?.dirty">
-            <div [hidden]="!coleccion?.hasError('required')">
-              street is required
+          <div *ngIf="nombre.hasError('required')">
+              Por favor, introduce un título
             </div>
-          </div>
 
         <div class="form-group">
             <label for="editorial">Editorial</label>
             <input type="text" 
               class="form-control" 
               placeholder="Editorial"
-              formControlName="editorial">
+              id="editorial"
+              required #editorial="ngModel" 
+              name="editorial" [(ngModel)]="numero.coleccion.editorial">
           </div>
-          <div *ngIf="editorial?.hasError('required')" 
+          <div *ngIf="editorial.hasError('required')" 
           class="alert alert-danger">Editorial requerida</div>
 
           <div class="form-group">
@@ -26,9 +28,11 @@
             <input type="text"
               class="form-control" 
               placeholder="Autor"
-              formControlName="autor">
+              id="autor"
+              required #autor="ngModel" 
+              name="autor" [(ngModel)]="numero.autor">
           </div>
-          <div *ngIf="autor?.hasError('required') && autor?.touched" 
+          <div *ngIf="autor.hasError('required') && autor?.touched" 
           class="alert alert-danger">Autor requerido</div>
 
           <div class="form-group">
@@ -36,9 +40,11 @@
             <input type="text" 
               class="form-control" 
               placeholder="Volumen"
-              formControlName="volumen">
+              id="volumen"
+              required #volumen="ngModel" 
+              name="volumen" [(ngModel)]="numero.volumen">
           </div>
-          <div *ngIf="volumen?.hasError('required') && volumen?.touched" 
+          <div [hidden]="!volumen.pristine"
           class="alert alert-danger">Volumen requerido</div>
 
           <div class="form-group">
@@ -46,14 +52,21 @@
             <input type="text" 
               class="form-control" 
               placeholder="Precio"
-              formControlName="precio">
+              id="precio"
+              required #precio="ngModel" 
+              name="precio" [(ngModel)]="numero.precio">
           </div>
-          <div *ngIf="precio?.hasError('required') && precio?.touched" 
+          <div *ngIf="precio.hasError('required') && precio.touched" 
           class="alert alert-danger">Precio requerido</div>
 
           <div class="form-group">
+            <input type="file" (change)="onFileChanged($event)">
+          </div>
+          <div class="form-group">
             <label for="estado">Estado</label>
-              <select class="form-control" id="estado">
+              <select class="form-control" id="estado"name="estado" [(ngModel)]="numero.estado"
+              id="estado"
+              required #estado="ngModel" >
                   <option *ngFor="let e of estados" [value]="e">{{e}}</option>
               </select>
           </div>

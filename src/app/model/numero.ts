@@ -1,30 +1,20 @@
-import { Coleccion } from "./coleccion";
-export class Numero {
-    id : number;
-    volumen : number;
-    fecha_publicacion : Date;
-    fecha_compra : Date;
-    autor : string;
-    precio : number;
-    portada : Uint8Array;
-    coleccion : Coleccion;
-    estado : Estado;
-    imagen : string;
-    
-    constructor(id : number,volumen : number,fecha_publicacion : Date,fecha_compra : Date, autor : string, precio : number,
-        portada : Uint8Array, coleccion : Coleccion, estado : Estado,imagen :string){
-            this.id=id;
-            this.volumen=volumen;
-            this.fecha_publicacion=fecha_publicacion;
-            this.fecha_compra=fecha_compra;
-            this.autor=autor;
-            this.precio=precio;
-            this.portada=portada;
-            this.coleccion=coleccion;
-            this.estado=estado;
-            this.imagen=imagen;
-        }
+import { Estado } from "./Estado";
+
+export interface Numero {
+    imagen?: any;
+    id:                number;
+    volumen:           number;
+    fecha_publicacion: Date;
+    fecha_compra:      Date;
+    autor:             string;
+    precio:            number;
+    portada:           any;
+    coleccion:         Coleccion;
+    estado:            Estado;
 }
-enum Estado {
-    malo, roto, bueno, excelente
+
+export interface Coleccion {
+    id:        number;
+    nombre:    string;
+    editorial: string;
 }

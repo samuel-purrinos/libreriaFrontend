@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let numero of numeros">
+          <tr *ngFor="let numero of resultados">
             <td>{{ numero.coleccion.nombre }}</td>
             <td>{{ numero.coleccion.editorial }}</td>
             <td>{{ numero.volumen }}</td>
@@ -24,7 +24,8 @@
             <td>{{ numero.fecha_compra | date}}</td>
             <td>{{ numero.estado }}</td>
             <td>{{ numero.autor }}</td>
-            <td><img src="data:image/jpg;base64,{{numero.imagen}}"></td>
+            <td><img class="small-cover" [src]="numero.imagen"></td>
+            <td><button type="button"  (click)="eliminar(numero.id)">Eliminar</button></td>
           </tr>
         </tbody>
       </table>
