@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { Numero } from 'src/app/model/numero';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NumeroService } from '../../service/numero.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Numero } from '../../model/numero';
 
 @Component({
   selector: 'app-comic-list',
@@ -9,10 +9,12 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./comic-list.component.css']
 })
 export class ComicListComponent {
-  private _resultados: Numero[] = [];
-
+  _resultados: Numero[] = [];
+  @Output() onEliminar : EventEmitter<number>=new EventEmitter();
   constructor(private numeroService: NumeroService,private sanitizer : DomSanitizer) {
+    console.log(this.resultados);
   }
+
   get resultados(){
     this._resultados=this.numeroService.resultados;
     for(let i=0;i<this._resultados.length;i++){
@@ -22,9 +24,6 @@ export class ComicListComponent {
     return this._resultados;
   }
   eliminar(id:number){
-    this.numeroService.eliminar(id);
-  }
-  mostrarTodos(){
-    this.numeroService.findAll();
-  }
+    this.onEliminar.emit(id);
+ }
 }

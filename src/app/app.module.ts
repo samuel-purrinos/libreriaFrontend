@@ -8,11 +8,14 @@ import { ComicFormComponent } from './comic-form/comic-form/comic-form.component
 import { NumeroService } from './service/numero.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BusquedaModule } from './busqueda/busqueda.module';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComicFormComponent
+    ComicFormComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { BusquedaModule } from './busqueda/busqueda.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BusquedaModule
+    BusquedaModule,
+    SharedModule
   ],
   providers: [NumeroService],
   bootstrap: [AppComponent]

@@ -45,6 +45,7 @@ export class NumeroService {
   eliminar(id: number){
     console.log(id);
     this.http.get(this.eliminarUrl+id).subscribe(respuesta => console.log(respuesta));
+    this.findAll();
   }
   public save(numero: Numero) {
     return this.http.post<Numero>(this.addNumero, numero);

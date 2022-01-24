@@ -1,9 +1,10 @@
 <h5>Buscar:</h5>
-<input
-    type="text"
-    class="form-control"
-    placeholder="Buscar colección"
-    (keyup.enter)="buscar()"
-    #txtBuscar
->
+<form (ngSubmit)="buscar()">
+    <input type="text" class="form-control" name="coleccion" [(ngModel)]="termino"
+    id="termino">
+</form>
 <button class="btn btn-info" value="Mostrar todos" (click)="mostrarTodos()">Mostrar todos</button>
+<hr>
+<div class="alert alert-danger" *ngIf="resultados.length ===0"> No se han encontrado resultados para 
+    {{termino}}
+</div>

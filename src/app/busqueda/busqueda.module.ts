@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { BuscarComponent } from './buscar/buscar.component';
 import { BusquedaPageComponent } from './busqueda-page/busqueda-page.component';
 import { ComicListComponent } from './comic-list/comic-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    SidebarComponent,
     BuscarComponent,
     BusquedaPageComponent,
     ComicListComponent
@@ -18,7 +17,8 @@ import { ComicListComponent } from './comic-list/comic-list.component';
     BusquedaPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ]
 })
 export class BusquedaModule { }

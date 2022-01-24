@@ -1,8 +1,9 @@
 <div class="card my-5">
+  <h2> Inserta los datos del nuevo número</h2>
     <div class="card-body">
       <form #formulario="ngForm" (ngSubmit)="onSubmit()" >
         <div class="form-group">
-            <label for="coleccion">Street</label>
+            <label for="coleccion" class="control-label">Colección</label>
             <input type="text" class="form-control" name="coleccion" [(ngModel)]="numero.coleccion.nombre"
             id="nombre"
             required #nombre="ngModel" >
@@ -12,7 +13,7 @@
             </div>
 
         <div class="form-group">
-            <label for="editorial">Editorial</label>
+            <label for="editorial" class="control-label">Editorial</label>
             <input type="text" 
               class="form-control" 
               placeholder="Editorial"
@@ -24,7 +25,7 @@
           class="alert alert-danger">Editorial requerida</div>
 
           <div class="form-group">
-            <label for="autor">Autor</label>
+            <label for="autor" class="control-label">Autor</label>
             <input type="text"
               class="form-control" 
               placeholder="Autor"
@@ -36,7 +37,7 @@
           class="alert alert-danger">Autor requerido</div>
 
           <div class="form-group">
-            <label for="volumen">Volumen</label>
+            <label for="volumen" class="control-label">Volumen</label>
             <input type="text" 
               class="form-control" 
               placeholder="Volumen"
@@ -48,7 +49,7 @@
           class="alert alert-danger">Volumen requerido</div>
 
           <div class="form-group">
-            <label for="precio">Precio</label>
+            <label for="precio" class="control-label">Precio</label>
             <input type="text" 
               class="form-control" 
               placeholder="Precio"
@@ -60,16 +61,20 @@
           class="alert alert-danger">Precio requerido</div>
 
           <div class="form-group">
-            <input type="file" (change)="onFileChanged($event)">
-          </div>
-          <div class="form-group">
-            <label for="estado">Estado</label>
+            <label for="estado" class="control-label">Estado</label>
               <select class="form-control" id="estado"name="estado" [(ngModel)]="numero.estado"
-              id="estado"
-              required #estado="ngModel" >
-                  <option *ngFor="let e of estados" [value]="e">{{e}}</option>
+                      required #estado="ngModel" >
+                      <option *ngFor="let e of estados" [value]="e">{{e}}</option>
               </select>
           </div>
+
+        <br/>
+
+          <div class="form-group">
+            <input type="file" (change)="onFileChanged($event)">
+          </div>
+        
+        <br/>
         
         <button type="submit" [disabled]="formulario.invalid" 
           class="btn btn-info">Añadir</button>

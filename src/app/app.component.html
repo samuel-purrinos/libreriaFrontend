@@ -1,20 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card bg-dark my-5">
-        <div class="card-body">
-          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
-          <ul class="text-center list-inline py-3">
-            <li class="list-inline-item">
-              <a routerLink="/numeros" class="btn btn-info">Números disponibles</a>
-                </li>
-            <li class="list-inline-item">
-              <a routerLink="/addnumero" class="btn btn-info">Añadir número</a>
-                </li>
-          </ul>
-        </div>
-      </div>
-      <router-outlet></router-outlet>
+  <div class="row container mt-4">
+
+    <div class="col-3">
+        <app-sidebar></app-sidebar>
     </div>
-  </div>
+
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+
 </div>

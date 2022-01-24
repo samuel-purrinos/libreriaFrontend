@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NumeroService } from '../../service/numero.service';
 
 @Component({
@@ -6,24 +6,25 @@ import { NumeroService } from '../../service/numero.service';
   templateUrl: './buscar.component.html',
   styleUrls: ['./buscar.component.css']
 })
-export class BuscarComponent implements OnInit {
-  @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
-  valor:string="";
+export class BuscarComponent {
+
+  @Output() onEnter : EventEmitter<string>=new EventEmitter();
+  termino : string;
+  
   constructor(private numeroService: NumeroService) {
+      this.termino='';
   }
 
     mostrarTodos(){
       this.numeroService.findAll();
     }
-   buscar(){
-     this.valor=this.txtBuscar.nativeElement.value;
-     if ( this.valor.trim().length === 0 ) {
-      return;
-    };
-    this.numeroService.buscar(this.valor);
-    this.txtBuscar.nativeElement.value="";
+    buscar(){
+      this.onEnter.emit(this.termino);
    }
-  ngOnInit(): void {
-  }
+
+   get resultados(){
+     return this.numeroService.resultados;
+   }
+   
 
 }

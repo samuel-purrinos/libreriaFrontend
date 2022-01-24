@@ -1,8 +1,8 @@
-<div class="card my-5">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
+<div *ngIf="resultados.length >0" class="card my-5">
+      <table class="table table-hover">
         <thead class="thead-dark">
           <tr>
+            <th scope="col">#</th>
             <th scope="col">Coleccion</th>
             <th scope="col">Editorial</th>
             <th scope="col">Volumen</th>
@@ -12,23 +12,24 @@
             <th scope="col">Estado</th>
             <th scope="col">Autor</th>
             <th scope="col">Portada</th>
+            <th scope="col">Eliminar</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let numero of resultados">
-            <td>{{ numero.coleccion.nombre }}</td>
-            <td>{{ numero.coleccion.editorial }}</td>
-            <td>{{ numero.volumen }}</td>
-            <td>{{ numero.precio }}</td>
-            <td>{{ numero.fecha_publicacion | date}}</td>
-            <td>{{ numero.fecha_compra | date}}</td>
-            <td>{{ numero.estado }}</td>
-            <td>{{ numero.autor }}</td>
+          <tr *ngFor="let numero of resultados;let i=index">
+            <td class="align-middle">{{i+1}}</td>
+            <td class="align-middle">{{ numero.coleccion.nombre }}</td>
+            <td class="align-middle">{{ numero.coleccion.editorial }}</td>
+            <td class="align-middle">{{ numero.volumen }}</td>
+            <td class="align-middle">{{ numero.precio }}</td>
+            <td class="align-middle">{{ numero.fecha_publicacion | date}}</td>
+            <td class="align-middle">{{ numero.fecha_compra | date}}</td>
+            <td class="align-middle">{{ numero.estado }}</td>
+            <td class="align-middle">{{ numero.autor }}</td>
             <td><img class="small-cover" [src]="numero.imagen"></td>
-            <td><button type="button"  (click)="eliminar(numero.id)">Eliminar</button></td>
+            <td class="align-middle"><button class="btn btn-info" type="button"  (click)="eliminar(numero.id)">Eliminar</button></td>
           </tr>
         </tbody>
       </table>
-    </div>
   </div>
 
