@@ -4,6 +4,7 @@ import { BuscarComponent } from './buscar/buscar.component';
 import { BusquedaPageComponent } from './busqueda-page/busqueda-page.component';
 import { ComicListComponent } from './comic-list/comic-list.component';
 import { FormsModule } from '@angular/forms';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 
 
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    PrimeNgModule
   ]
 })
 export class BusquedaModule { }

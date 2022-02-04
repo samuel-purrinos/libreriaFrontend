@@ -1,35 +1,35 @@
-<div *ngIf="resultados.length >0" class="card my-5">
-      <table class="table table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Coleccion</th>
-            <th scope="col">Editorial</th>
-            <th scope="col">Volumen</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Publicacion</th>
-            <th scope="col">Compra</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Autor</th>
-            <th scope="col">Portada</th>
-            <th scope="col">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let numero of resultados;let i=index">
-            <td class="align-middle">{{i+1}}</td>
-            <td class="align-middle">{{ numero.coleccion.nombre }}</td>
-            <td class="align-middle">{{ numero.coleccion.editorial }}</td>
-            <td class="align-middle">{{ numero.volumen }}</td>
-            <td class="align-middle">{{ numero.precio }}</td>
-            <td class="align-middle">{{ numero.fecha_publicacion | date}}</td>
-            <td class="align-middle">{{ numero.fecha_compra | date}}</td>
-            <td class="align-middle">{{ numero.estado }}</td>
-            <td class="align-middle">{{ numero.autor }}</td>
-            <td><img class="small-cover" [src]="numero.imagen"></td>
-            <td class="align-middle"><button class="btn btn-info" type="button"  (click)="eliminar(numero.id)">Eliminar</button></td>
-          </tr>
-        </tbody>
-      </table>
-  </div>
+
+  <div *ngIf="resultados.length >0" class="card">
+    <h5>Números disponibles</h5>
+    <p-table [value]="resultados">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="coleccion.nombre">Colección <p-sortIcon field="coleccion.nombre"></p-sortIcon></th>
+                <th pSortableColumn="coleccion.editorial">Editorial <p-sortIcon field="coleccion.editorial"></p-sortIcon></th>
+                <th pSortableColumn="volumen">Volumen <p-sortIcon field="volumen"></p-sortIcon></th>
+                <th pSortableColumn="precio">Precio <p-sortIcon field="precio"></p-sortIcon></th>
+                <th pSortableColumn="fecha_publicacion">Publicación <p-sortIcon field="fecha_publicacion"></p-sortIcon></th>
+                <th pSortableColumn="fecha_compra">Compra <p-sortIcon field="fecha_compra"></p-sortIcon></th>
+                <th pSortableColumn="autor">Autor <p-sortIcon field="autor"></p-sortIcon></th>
+                <th pSortableColumn="estado">Estado <p-sortIcon field="estado"></p-sortIcon></th>
+                <th>Portada</th>
+                <th>Eliminar</th>
+              </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-numero>
+            <tr>
+                <td>{{numero.coleccion.nombre}}</td>
+                <td>{{numero.coleccion.editorial}}</td>
+                <td>{{numero.volumen}}</td>
+                <td>{{numero.precio}}</td>
+                <td>{{numero.fecha_publicacion | date:'dd MMMM, yyyy':'':'es'}}</td>
+                <td>{{numero.fecha_compra | date:'dd MMMM, yyyy':'':'es'}}</td>
+                <td>{{numero.autor}}</td>
+                <td>{{numero.estado}}</td>
+                <td><img class="small-cover" [src]="numero.imagen"></td>
+                <td><button pButton label="Eliminar" (click)="eliminar(numero.id)"></button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
 

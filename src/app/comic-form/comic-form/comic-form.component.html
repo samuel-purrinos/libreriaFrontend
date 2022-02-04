@@ -76,8 +76,8 @@
         
         <br/>
         
-        <button type="submit" [disabled]="formulario.invalid" 
-          class="btn btn-info">Añadir</button>
+        <button  pButton label="Añadir" (click)="onSubmit()" type="submit"
+        ></button>
       </form>
     </div>
   </div>

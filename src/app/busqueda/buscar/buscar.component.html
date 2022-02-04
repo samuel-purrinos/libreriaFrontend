@@ -3,7 +3,7 @@
     <input type="text" class="form-control" name="coleccion" [(ngModel)]="termino"
     id="termino">
 </form>
-<button class="btn btn-info" value="Mostrar todos" (click)="mostrarTodos()">Mostrar todos</button>
+<p-button label="Mostrar Todos" (click)="mostrarTodos()"></p-button>
 <hr>
 <div class="alert alert-danger" *ngIf="resultados.length ===0"> No se han encontrado resultados para 
     {{termino}}

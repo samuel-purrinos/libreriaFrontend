@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NumeroService } from '../../service/numero.service';
 import { Numero } from '../../model/numero';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-comic-list',
@@ -11,8 +12,8 @@ import { Numero } from '../../model/numero';
 export class ComicListComponent {
   _resultados: Numero[] = [];
   @Output() onEliminar : EventEmitter<number>=new EventEmitter();
-  constructor(private numeroService: NumeroService,private sanitizer : DomSanitizer) {
-    console.log(this.resultados);
+  constructor(private numeroService: NumeroService,private sanitizer : DomSanitizer,private primengConfig: PrimeNGConfig) {
+    this.primengConfig.ripple = true;
   }
 
   get resultados(){
