@@ -10,14 +10,13 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./comic-list.component.css']
 })
 export class ComicListComponent {
-  _resultados: Numero[] = [];
+  @Input() _resultados: Numero[] = [];
   @Output() onEliminar : EventEmitter<number>=new EventEmitter();
   constructor(private numeroService: NumeroService,private sanitizer : DomSanitizer,private primengConfig: PrimeNGConfig) {
     this.primengConfig.ripple = true;
   }
 
   get resultados(){
-    this._resultados=this.numeroService.resultados;
     for(let i=0;i<this._resultados.length;i++){
       let objectURL = 'data:image/jpeg;base64,' + this._resultados[i].portada;
       this._resultados[i].imagen=this.sanitizer.bypassSecurityTrustUrl(objectURL);

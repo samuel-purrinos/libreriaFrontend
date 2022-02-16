@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Numero } from 'src/app/model/numero';
 import { NumeroService } from 'src/app/service/numero.service';
 
 
@@ -8,6 +9,8 @@ import { NumeroService } from 'src/app/service/numero.service';
   styleUrls: ['./busqueda-page.component.css']
 })
 export class BusquedaPageComponent {
+
+  resultados : Numero[]=[];
  
   constructor(private numeroService: NumeroService) {
 
@@ -18,7 +21,7 @@ export class BusquedaPageComponent {
     if ( termino.trim().length === 0 ) {
       return;
     };
-    this.numeroService.buscar(termino);
+    this.numeroService.buscar(termino).subscribe(data => this.resultados=data);
   }
 
   eliminar(id:number){

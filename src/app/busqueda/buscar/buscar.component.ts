@@ -22,9 +22,6 @@ export class BuscarComponent {
       this.onEnter.emit(this.termino);
    }
 
-   get resultados(){
-     return this.numeroService.resultados;
-   }
    
 
 }
