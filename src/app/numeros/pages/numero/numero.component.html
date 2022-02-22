@@ -1,0 +1,40 @@
+<mat-grid-list cols="1" *ngIf="!numero; else divNumero">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<ng-template #divNumero>
+    
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutGap="30px">
+
+         <div fxFlex="50">
+             <h1>{{ numero.coleccion.nombre }} <small>- {{ numero.autor }} </small> </h1>
+             <mat-divider></mat-divider>
+             <br>
+             <img [src]="numero | imagen">
+         </div>
+
+         <div fxFlex="50">
+             <h1>{{ numero.coleccion.editorial }}</h1>
+             <mat-divider></mat-divider>
+
+             <mat-list>
+                 <mat-list-item> Precio : {{ numero.precio | currency:'EUR':true}} </mat-list-item>
+                 <mat-list-item> 1º publicación : {{ numero.fecha_publicacion | date:'dd MMMM, yyyy':'':'es'}} </mat-list-item>
+                 <mat-list-item> Añadido : {{ numero.fecha_compra | date:'dd MMMM, yyyy':'':'es'}} </mat-list-item>
+                 <mat-list-item> Estado : {{ numero.estado }} </mat-list-item>
+             </mat-list>
+
+             <br>
+             <button mat-button
+                     color="warn"
+                     (click)="regresar()">
+                 Regresar
+             </button>
+         </div>
+
+    </div>

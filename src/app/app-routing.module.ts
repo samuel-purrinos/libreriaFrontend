@@ -1,15 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ComicFormComponent } from './comic-form/comic-form/comic-form.component';
-import { BusquedaPageComponent } from './busqueda/busqueda-page/busqueda-page.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
-  {path : 'numeros',component : BusquedaPageComponent},
-  {path : 'addnumero', component : ComicFormComponent }
+  {
+    path : 'auth',
+    loadChildren : () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path : 'numeros',
+    loadChildren : () => import('./numeros/numeros.module').then(m => m.NumerosModule)
+  },
+  {
+    path : '404',
+    component : ErrorPageComponent  
+  },
+  {
+    path : '**',
+    redirectTo : '404'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot( routes )
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }

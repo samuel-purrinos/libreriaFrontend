@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> {{ numero.coleccion.nombre }} </mat-card-title>
+        <mat-card-subtitle> {{ numero.coleccion.editorial }} </mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="numero | imagen">
+
+    <mat-card-content>
+        <h3>{{ numero.autor }}</h3>
+        <p>
+            <strong>Primera publicación</strong> {{ numero.fecha_publicacion | date:'dd MMMM, yyyy':'':'es'}}
+            <br>
+            <strong> Precio </strong> {{ numero.precio | currency:'EUR':true}}
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button 
+                color="warn"
+                [routerLink]="['/numeros/home', numero.id ]">
+            Leer más...
+        </button>
+
+        <button mat-button 
+                color="info"
+                [routerLink]="['/numeros/home/editar', numero.id ]">
+            Editar
+        </button>
+    </mat-card-actions>
+
+</mat-card>
