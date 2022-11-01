@@ -11,7 +11,7 @@ export class NumeroService {
   private numerosUrl: string;
 
   constructor(private http: HttpClient) {
-    this.numerosUrl = 'http://localhost:8080/numeros';
+    this.numerosUrl = 'https://localhost:8080/numeros';
   }
 
   getNumeroPorId (id :string): Observable<Numero>{

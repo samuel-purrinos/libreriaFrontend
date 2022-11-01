@@ -8,11 +8,11 @@ import { NumeroComponent } from './pages/numero/numero.component';
 
 const routes : Routes = [
   {
-    path : 'home', component : HomeComponent,
+    path : '', component : HomeComponent,
     children : [
       { path : 'agregar', component : AgregarComponent },
       { path : 'buscar', component : BuscarComponent },
-      { path : 'listado', component : ListadoComponent },
+      { path : '', component : ListadoComponent },
       { path : 'editar/:id', component : AgregarComponent },
       { path : ':id', component : NumeroComponent },
       { path : '**', redirectTo : 'home' }
